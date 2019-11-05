@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Sponsor>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (Sponsor sp in Model)
+{
+    <a href="@sp.Website">
+        <div>
+            <h1>@Html.DisplayFor(model => sp.Name)</h1>
+
+            <img src="@sp.Logo.First().Url" height="25%" width="25%" />
+
+        </div>
+    </a>
+    <div>
+        @Html.DisplayFor(model => sp.Description)
+    </div>
+}
+

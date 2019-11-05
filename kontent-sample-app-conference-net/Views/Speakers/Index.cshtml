@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Speaker>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Speakers:</h1>
+
+@foreach (Speaker sp in Model)
+{
+    <div>
+        <img src="@sp.Photo.First().Url" />
+        <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
+        - <span>@sp.JobTitle</span>
+    </div>
+}
+

@@ -1,0 +1,19 @@
+﻿@model Speaker
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<img src="@Html.DisplayFor(model => model.Photo.First().Url)" />
+<h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
+<div>
+    @Html.Raw(@Model.Bio)
+</div>
+<div>
+    @await Component.InvokeAsync("SpeakerAgendaItem", new { speakerCodename = Model.System.Codename, location = ViewBag.location})
+</div>
+
+<div>
+    <a href='javascript:history.go(-1)'>Back</a>
+</div>
+
+<script src="https://platform.twitter.com/widgets.js"></script>

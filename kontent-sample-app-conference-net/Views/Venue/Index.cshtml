@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Venue>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (Venue ve in Model)
+{
+    <h1>@Html.DisplayFor(model => ve.Name)</h1>
+
+    <img src="@ve.Image.First().Url" />
+
+    <div>
+        @Html.DisplayFor(model => ve.Description)
+    </div>
+
+    <h4>Address:</h4>
+    <div>
+        @Html.DisplayFor(model => ve.Address)
+    </div>
+
+    <div>
+       <a href="@Html.DisplayFor(model => ve.Link)" >Book a Room</a>
+    </div>
+
+    <div>
+        <iframe src="@ve.MapSource" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+}
+
+<div>
+    <a href='javascript:history.go(-1)'>Back</a>
+</div>

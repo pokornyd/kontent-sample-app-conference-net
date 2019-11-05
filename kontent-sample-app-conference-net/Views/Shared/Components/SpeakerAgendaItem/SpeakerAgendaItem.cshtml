@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AgendaItem>
+@using KenticoKontentModels;
+@{
+    ViewData["Title"] = "Default";
+}
+
+@foreach (AgendaItem item in Model)
+{
+    <div>               
+        <a asp-controller="Agenda" asp-action="Detail" asp-route-urlSlug="@item.UrlSlug" asp-route-location="@item.Location.First().Name">
+            <h4>@item.Name</h4>
+        </a>
+        @foreach (Presentation pr in item.Presentation)
+        {
+            <p>
+                @Html.DisplayFor(model => pr.Description)
+            </p>
+        }
+
+    </div>
+}
+

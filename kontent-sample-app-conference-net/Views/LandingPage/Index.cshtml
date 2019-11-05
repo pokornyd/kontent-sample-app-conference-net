@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Home>
+@{
+    Layout = null;
+    ViewData["Title"] = "LandingPage";
+}
+
+<h1>LandingPage</h1>
+
+@foreach(Home hp in Model)
+{   
+    <div>
+        <a asp-action="Index" asp-controller="Home" asp-route-location="@hp.Location.First().Name">
+            <img src="@hp.BannerImage.First().Url" />
+        </a>
+    </div>
+}
+

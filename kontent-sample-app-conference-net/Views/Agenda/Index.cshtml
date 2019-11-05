@@ -1,0 +1,55 @@
+﻿@model AgendaBlock
+@{
+    ViewData["Title"] = "Agenda";
+}
+
+@foreach (Agenda ag in Model.Agendas)
+{
+    <div>
+        <h1>@ag.Name</h1>
+
+        @foreach (AgendaItem ai in ag.AgendaItems)
+        {
+            <div>
+                <h3>
+                    <a asp-route="agenda-item" asp-route-urlSlug="@ai.UrlSlug">@ai.Name</a>
+                </h3>
+                <p>
+                    @Html.DisplayFor(model => ai.StartTime) &mdash; @Html.DisplayFor(model => ai.EndTime)
+                </p>
+                @if (ai.Room.Any())
+                {
+                    <div>
+                        <h4>Room:</h4>
+
+                        @foreach (Room ro in ai.Room)
+                        {
+                            @ro.Name
+                            @:&mdash;
+                            foreach (var option in ro.Floor)
+                            {
+                                @option.Name
+                            }
+                        }
+                    </div>
+                }
+                @if (ai.Speakers.Any())
+                {
+                    <div>
+                        <h4>Speakers:</h4>
+                        @foreach (Speaker sp in ai.Speakers)
+                        {
+                            <div>
+                                <img src="@sp.Photo.First().Url" height="10%" width="10%" />
+                                <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
+                                - <span>@sp.JobTitle</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <hr />
+        }
+    </div>
+}
+

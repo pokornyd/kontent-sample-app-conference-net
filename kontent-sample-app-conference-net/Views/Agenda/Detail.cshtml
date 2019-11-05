@@ -1,0 +1,60 @@
+﻿@model AgendaItem
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div>
+    @Html.DisplayFor(model => model.StartTime) &ndash; @Html.DisplayFor(model => model.EndTime)
+</div>
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+
+@foreach (Presentation pr in Model.Presentation)
+{
+    <p>
+        @Html.DisplayFor(model => pr.Description)
+    </p>
+}
+    @if (Model.Recording.Any())
+    {
+        <h3>Recorded Presentation:</h3>
+        @foreach (HostedVideo hv in Model.Recording)
+        {
+            <iframe class='hosted-video__wrapper' width='560' height='315' src='https://www.youtube.com/embed/@hv.VideoId' frameborder='0' allowfullscreen> </iframe>
+        }
+    }
+
+@foreach (Room ro in Model.Room)
+{
+    <div>
+        @ro.Name
+        &mdash;
+        @foreach (var option in ro.Floor)
+        {
+            @option.Name
+        }
+    </div>
+}
+
+<hr />
+
+@if (Model.Speakers.Any())
+{
+    <div>
+        <h4>Speakers:</h4>
+        @foreach (Speaker sp in Model.Speakers)
+        {
+            <div>
+                <img src="@sp.Photo.First().Url" height="10%" width="10%" />
+                <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
+                - <span>@sp.JobTitle</span>
+            </div>
+        }
+
+    </div>
+}
+
+<hr />
+<div>
+    <a href='javascript:history.go(-1)'>Back</a>
+</div>
