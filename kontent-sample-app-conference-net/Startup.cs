@@ -56,14 +56,14 @@ namespace kontent_sample_app_conference_net
                 );
 
                 routes.MapRoute(
-                name: "home",
-                template: "{location}/{controller}/{action}/{id?}",
-                defaults: new { controller = "Home", action = "Index" }
+                    name: "home",
+                    template: "{location}/{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" }
                 );
                 routes.MapRoute(
-                name: "default",
-                template: "{controller}/{action}/{id?}",
-                defaults: new { controller = "LandingPage", action = "Index" }
+                    name: "default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "LandingPage", action = "Index" }
                 );
             });
         }
