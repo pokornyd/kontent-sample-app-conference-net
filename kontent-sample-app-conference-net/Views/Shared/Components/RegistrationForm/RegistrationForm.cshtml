@@ -1,0 +1,18 @@
+﻿@model IEnumerable<HubspotForm>
+@{
+    ViewData["Title"] = "RegistrationForm";
+}
+
+@foreach (HubspotForm hu in Model)
+{
+    <div style="float:right;">
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
+        <script>
+              hbspt.forms.create({
+	            portalId: "@hu.PortalId",
+	            formId: "@hu.FormId"
+            });
+        </script>
+    </div>
+}
+
