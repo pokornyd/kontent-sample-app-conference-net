@@ -5,21 +5,6 @@
 }
 
 <div class="text-center">
-    @if (Model.LiveUpdates.Any())
-    {
-        @foreach (AgendaItem ai in Model.LiveUpdates)
-        {
-            @if (DateTime.UtcNow.Subtract(ai.System.LastModified).TotalHours < 1)
-            {       
-                <div class="alert alert-info">
-                    <b>A change was made to </b>
-                    <a asp-controller="Agenda" asp-action="Detail" asp-route-location="@ViewBag.location" asp-route-urlSlug="@ai.UrlSlug">
-                        @ai.Name
-                    </a>
-                </div>
-            }
-        }
-    }
     <h1 class="display-4">@Html.DisplayFor(model => model.BannerText)</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>
