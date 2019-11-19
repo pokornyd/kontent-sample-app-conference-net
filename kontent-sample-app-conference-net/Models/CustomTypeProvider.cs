@@ -14,14 +14,16 @@ namespace KenticoKontentModels
             {typeof(AgendaItem), "agenda_item"},
             {typeof(ContactInformation), "contact_information"},
             {typeof(Home), "home"},
-            {typeof(HostedVideo), "hosted_video"},
+            {typeof(HubspotForm), "hubspot_form"},
             {typeof(Presentation), "presentation"},
-            {typeof(PresentationMaterials), "presentation_materials"},
+            {typeof(Registration), "registration"},
             {typeof(Room), "room"},
             {typeof(Speaker), "speaker"},
             {typeof(Sponsor), "sponsor"},
+            {typeof(Ticket), "ticket"},
             {typeof(Tweet), "tweet"},
-            {typeof(Venue), "venue"}
+            {typeof(Venue), "venue"},
+            {typeof(YoutubeVideo), "youtube_video"}
         };
 
         public Type GetType(string contentType)
