@@ -7,10 +7,17 @@
 
 @foreach (Speaker sp in Model)
 {
-    <div>
+<div>
+    @if (sp.Photo.Any())
+    {
         <img src="@sp.Photo.First().Url" />
-        <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
-        - <span>@sp.JobTitle</span>
-    </div>
+    }
+    else
+    {
+        <img src="~/images/SpeakerIcon.png" />
+    }
+    <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
+    - <span>@sp.JobTitle</span>
+</div>
 }
 

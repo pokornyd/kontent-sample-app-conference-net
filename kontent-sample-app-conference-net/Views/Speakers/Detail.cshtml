@@ -3,13 +3,21 @@
     ViewData["Title"] = "Detail";
 }
 
-<img src="@Html.DisplayFor(model => model.Photo.First().Url)" />
+@if (Model.Photo.Any())
+{
+    <img src="@Html.DisplayFor(model => model.Photo.First().Url)" />
+}
+else
+{
+    <img src="~/images/SpeakerIcon.png" />
+}
+
 <h1>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
 <div>
     @Html.Raw(@Model.Bio)
 </div>
 <div>
-    @await Component.InvokeAsync("SpeakerAgendaItem", new { speakerCodename = Model.System.Codename, location = ViewBag.location})
+    @await Component.InvokeAsync("SpeakerAgendaItem", new { speakerCodename = Model.System.Codename, location = ViewBag.location })
 </div>
 
 <div>
