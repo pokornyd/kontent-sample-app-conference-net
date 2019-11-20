@@ -18,9 +18,9 @@
     @if (Model.Recording.Any())
     {
         <h3>Recorded Presentation:</h3>
-        @foreach (HostedVideo hv in Model.Recording)
+        @foreach (YoutubeVideo yv in Model.Recording)
         {
-            <iframe class='hosted-video__wrapper' width='560' height='315' src='https://www.youtube.com/embed/@hv.VideoId' frameborder='0' allowfullscreen> </iframe>
+            <iframe class='hosted-video__wrapper' width='560' height='315' src='https://www.youtube.com/embed/@yv.VideoId' frameborder='0' allowfullscreen> </iframe>
         }
     }
 
@@ -45,7 +45,14 @@
         @foreach (Speaker sp in Model.Speakers)
         {
             <div>
-                <img src="@sp.Photo.First().Url" height="10%" width="10%" />
+                @if (sp.Photo.Any())
+                {
+                    <img src="@sp.Photo.First().Url" height="10%" width="10%" />
+                }
+                else
+                {
+                    <img src="~/images/SpeakerIcon.png" height="10%" width="10%"/>
+                }
                 <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
                 - <span>@sp.JobTitle</span>
             </div>
