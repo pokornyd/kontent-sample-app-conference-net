@@ -22,7 +22,7 @@ namespace kontent_sample_app_conference_net.Controllers
             }
             else
             {
-                return View(response.Items[0]);
+                return View(response.Items);
             }
         }
 
