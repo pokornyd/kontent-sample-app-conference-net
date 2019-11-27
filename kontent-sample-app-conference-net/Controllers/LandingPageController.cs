@@ -23,14 +23,21 @@ namespace kontent_sample_app_conference_net.Controllers
                 new EqualsFilter("system.type", "home")
                 );
 
-            if(response.Items.Count > 1)
+            if (response.Items.Count == 0)
             {
-                return View(response.Items);
+                return base.GetResponse(response);
             }
             else
             {
-                var loc = response.Items.First().Location.First().Name;
-                return RedirectToAction("Index", "Home", new { location = loc });
+                if (response.Items.Count > 1)
+                {
+                    return View(response.Items);
+                }
+                else
+                {
+                    var loc = response.Items.First().Location.First().Name;
+                    return RedirectToAction("Index", "Home", new { location = loc });
+                }
             }
             
         }
