@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Kentico.Kontent.Delivery;
 using KenticoKontentModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace kontent_sample_app_conference_net.Controllers
 {
     public class AgendaController : BaseController
     {
-        public  AgendaController(IDeliveryClient deliveryClient) : base(deliveryClient)
+        public  AgendaController(IDeliveryClient deliveryClient, IConfiguration configuration) : base(deliveryClient, configuration)
         {
 
         }

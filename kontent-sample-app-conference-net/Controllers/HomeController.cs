@@ -1,6 +1,7 @@
 ﻿using Kentico.Kontent.Delivery;
 using KenticoKontentModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
 namespace kontent_sample_app_conference_net.Controllers
@@ -8,7 +9,7 @@ namespace kontent_sample_app_conference_net.Controllers
     public class HomeController : BaseController
     {
 
-        public HomeController(IDeliveryClient deliveryClient) : base(deliveryClient)
+        public HomeController(IDeliveryClient deliveryClient, IConfiguration configuration) : base(deliveryClient, configuration)
         {
 
         }
@@ -21,6 +22,10 @@ namespace kontent_sample_app_conference_net.Controllers
                 new EqualsFilter("system.type", "home"),
                 new ContainsFilter("elements.location", location.ToLower())
                 );
+
+            var item = response.Items[0];
+
+            item.EditURL = base.GetEditURL(item.System.Language, item.System.Id);
 
             return base.GetResponse(response);
         }

@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Kentico.Kontent.Delivery;
 using KenticoKontentModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace kontent_sample_app_conference_net.Controllers
 {
     public class LandingPageController : BaseController
     {
 
-        public LandingPageController(IDeliveryClient deliveryClient) : base(deliveryClient)
+        public LandingPageController(IDeliveryClient deliveryClient, IConfiguration configuration) : base(deliveryClient, configuration)
         {
 
         }
@@ -22,6 +23,8 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
                 new EqualsFilter("system.type", "home")
                 );
+
+            var count = response.Items.Count;
 
             if (response.Items.Count == 0)
             {

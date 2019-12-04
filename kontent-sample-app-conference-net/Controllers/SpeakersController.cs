@@ -2,12 +2,13 @@
 using Kentico.Kontent.Delivery;
 using KenticoKontentModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace kontent_sample_app_conference_net.Controllers
 {
     public class SpeakersController : BaseController
     {
-        public SpeakersController(IDeliveryClient deliveryClient): base(deliveryClient)
+        public SpeakersController(IDeliveryClient deliveryClient, IConfiguration configuration) : base(deliveryClient, configuration)
         {
 
         }

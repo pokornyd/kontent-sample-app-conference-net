@@ -10,7 +10,7 @@
         @foreach (AgendaItem ai in Model.LiveUpdates)
         {
             @if (DateTime.UtcNow.Subtract(ai.System.LastModified).TotalHours < 1)
-            {       
+            {
                 <div class="alert alert-info">
                     <b>A change was made to </b>
                     <a asp-controller="Agenda" asp-action="Detail" asp-route-location="@ViewBag.location" asp-route-urlSlug="@ai.UrlSlug">
@@ -36,5 +36,7 @@
     {
         <a href="@sp.Website"><img src="@sp.Logo.First().Url" height="25%" width="25%" /></a>
     }
+
+    <a href="@Model.EditURL" target="_blank">Edit in Kentico Cloud</a>
 
 </div>
