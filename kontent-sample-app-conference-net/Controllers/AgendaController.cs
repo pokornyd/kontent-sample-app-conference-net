@@ -22,7 +22,7 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryItemListingResponse<AgendaBlock> response = await DeliveryClient.GetItemsAsync<AgendaBlock>(
                 new EqualsFilter("system.type", "agenda_block"),
                 new ContainsFilter("elements.location", location.ToLower()),
-                new DepthParameter(2)
+                new DepthParameter(4)
                 );
 
             return View(response.Items[0]);

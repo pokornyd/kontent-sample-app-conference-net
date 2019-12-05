@@ -1,17 +1,32 @@
 ﻿@model IEnumerable<Home>
 @{
-    Layout = null;
-    ViewData["Title"] = "LandingPage";
+    ViewData["Title"] = "Konferences";
+    Layout = "_Layout";    
 }
 
-<h1>LandingPage</h1>
-
-@foreach(Home hp in Model)
-{   
-    <div>
-        <a asp-action="Index" asp-controller="Home" asp-route-location="@hp.Location.First().Name">
-            <img src="@hp.BannerImage.First().Url" />
-        </a>
-    </div>
+@foreach (Home hp in Model)
+{
+    <section id="venue">
+        <div class="row no-gutters">
+            <div class="col-lg-6">
+                <a asp-action="Index" asp-controller="Home" asp-route-location="@hp.Location.First().Name">
+                    <img class="img-fluid" alt="" src="@hp.BannerImage.First().Url" />
+                </a>
+            </div>
+            <div class="col-lg-6 venue-info">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-lg-8">
+                        <h3><a asp-action="Index" asp-controller="Home" asp-route-location="@hp.Location.First().Name"> @hp.BannerText</a></h3>
+                        <h4>
+                            @hp.Venue.First().Name <br/>
+                            @Html.DisplayFor(address => hp.Venue.First().Address)
+                        </h4>
+                        <p>@Html.DisplayFor(sDate => hp.StartDate) - @Html.DisplayFor(eDate => hp.EndDate)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 }
+
 

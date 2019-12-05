@@ -6,12 +6,23 @@
     <RootNamespace>kontent_sample_app_conference_net</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\lib.old\**" />
+    <Content Remove="wwwroot\lib.old\**" />
+    <EmbeddedResource Remove="wwwroot\lib.old\**" />
+    <None Remove="wwwroot\lib.old\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\site.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Kentico.Kontent.Delivery" Version="12.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
 

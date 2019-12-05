@@ -3,30 +3,35 @@
     ViewData["Title"] = "Registration";
 }
 
-<h1>@Html.DisplayFor(model => model.Title)</h1>
+    <section id="about">
+        <div class="section-header">
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
+        </div>
 
-<div>
-    @Html.Raw(Model.Description)
-</div>
-<table style="float:left; width:60%;">
-    <thead>
-        <tr>
-            <th>Ticket Type</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    @foreach (Ticket ti in Model.Tickets)
-    {
-        <tr>
-            <td>
-                <h4>@Html.DisplayFor(model => ti.Name)</h4>
-                <p>@Html.Raw(ti.Description)</p>
-            </td>
-            <td>
-                $@Html.DisplayFor(model => @ti.Price)
-            </td>
-        </tr>
-    }
-</table>
-
-@await Component.InvokeAsync("RegistrationForm")
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-lg-6 col-md-6" style="float:left;">
+                    <table>
+                        @foreach (Ticket ti in Model.Tickets)
+                        {
+                            <tr>
+                                <td>
+                                    <h3>@Html.DisplayFor(model => ti.Name)</h3>
+                                    <span>@Html.Raw(ti.Description)</span>
+                                </td>
+                                <td>
+                                    <h3>$@Html.DisplayFor(model => @ti.Price)</h3>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <!--==========================
+                Hubspot Form
+                ============================-->
+                <div class="col-lg-4 col-md-4 col-sm-2">
+                    @await Component.InvokeAsync("RegistrationForm")
+                </div>
+            </div>
+        </div>
+    </section>

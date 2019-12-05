@@ -20,7 +20,8 @@ namespace kontent_sample_app_conference_net.Controllers
         {
 
             DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
-                new EqualsFilter("system.type", "home")
+                new EqualsFilter("system.type", "home"),
+                new DepthParameter(2)
                 );
 
             if(response.Items.Count > 1)

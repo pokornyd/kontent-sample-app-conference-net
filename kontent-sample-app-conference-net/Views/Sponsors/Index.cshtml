@@ -1,20 +1,26 @@
 ﻿@model IEnumerable<Sponsor>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sponsors";
 }
 
-@foreach (Sponsor sp in Model)
-{
-    <a href="@sp.Website">
-        <div>
-            <h1>@Html.DisplayFor(model => sp.Name)</h1>
-
-            <img src="@sp.Logo.First().Url" height="25%" width="25%" />
-
+    <section id="supporters">
+        <div class="section-header">
+            <h2>Our Sponsors:</h2>
         </div>
-    </a>
-    <div>
-        @Html.DisplayFor(model => sp.Description)
-    </div>
-}
-
+        <div class="container">
+            <div class="row no-gutters supporters-wrap clearfix">
+                @foreach (Sponsor sp in Model)
+                {
+                <div class="wow fadeInUp">
+                    <a href="@sp.Website" target="_blank">
+                        <img class="supporter-logo" src="@sp.Logo.First().Url" />
+                        <h1>@Html.DisplayFor(model => sp.Name)</h1>
+                    </a>
+                    <p>
+                        @Html.DisplayFor(model => sp.Description)
+                    </p>
+                </div>
+                }
+            </div>
+            </div>
+    </section>
