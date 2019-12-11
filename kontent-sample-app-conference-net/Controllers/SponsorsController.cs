@@ -22,7 +22,8 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryItemListingResponse<Sponsor> response = await DeliveryClient.GetItemsAsync<Sponsor>(
                 new EqualsFilter("system.type", "sponsor")
                 );
-            return base.GetResponse(response);
+            //return base.GetResponse(response);
+            return View(response.Items);
         }
     }
 }

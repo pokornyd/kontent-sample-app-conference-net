@@ -23,7 +23,8 @@ namespace kontent_sample_app_conference_net.Controllers
                 new ContainsFilter("elements.location", location.ToLower())
                 );
 
-            return base.GetResponse(response);
+            //return base.GetResponse(response);
+            return View(response.Items);
         }
     }
 }

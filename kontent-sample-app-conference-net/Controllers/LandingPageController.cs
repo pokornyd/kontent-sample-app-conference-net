@@ -19,16 +19,17 @@ namespace kontent_sample_app_conference_net.Controllers
         public async Task<ActionResult> Index()
         {
 
+
             DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
                 new EqualsFilter("system.type", "home")
                 );
 
-            if (response.Items.Count == 0)
-            {
-                return base.GetResponse(response);
-            }
-            else
-            {
+            //if (response.Items.Count == 0)
+            //{
+            //    return base.GetResponse(response);
+            //}
+            //else
+            //{
                 if (response.Items.Count > 1)
                 {
                     return View(response.Items);
@@ -38,7 +39,7 @@ namespace kontent_sample_app_conference_net.Controllers
                     var loc = response.Items.First().Location.First().Name;
                     return RedirectToAction("Index", "Home", new { location = loc });
                 }
-            }
+            //}
             
         }
     }
