@@ -14,18 +14,6 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryClient = deliveryClient;
         }
 
-        //public ActionResult GetResponse<T>(DeliveryItemListingResponse<T> response)
-        //{
-        //    if (response.Items.Count == 0)
-        //    {
-        //        return StatusCode(404, "The page you're looking for doesn't exists.");
-        //    }
-        //    else
-        //    {
-        //        return View(response.Items);
-        //    }
-        //}
-
         protected IDeliveryClient DeliveryClient { get; }
     }
 }

@@ -20,27 +20,19 @@ namespace kontent_sample_app_conference_net.Controllers
         {
 
 
-            DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
-                new EqualsFilter("system.type", "home")
-                );
+        DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
+            new EqualsFilter("system.type", "home")
+            );
 
-            //if (response.Items.Count == 0)
-            //{
-            //    return base.GetResponse(response);
-            //}
-            //else
-            //{
-                if (response.Items.Count > 1)
-                {
-                    return View(response.Items);
-                }
-                else
-                {
-                    var loc = response.Items.First().Location.First().Name;
-                    return RedirectToAction("Index", "Home", new { location = loc });
-                }
-            //}
-            
+            if (response.Items.Count > 1)
+            {
+                return View(response.Items);
+            }
+            else
+            {
+                var loc = response.Items.First().Location.First().Name;
+                return RedirectToAction("Index", "Home", new { location = loc });
+            }
         }
     }
 }
