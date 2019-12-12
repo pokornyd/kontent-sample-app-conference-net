@@ -5,11 +5,6 @@ namespace kontent_sample_app_conference_net.Controllers
 {
     public class ErrorController : Controller
     {
-        //public LandingPageController(IDeliveryClient deliveryClient) : base(deliveryClient)
-        //{
-
-        //}
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [Route("/Error/{statusCode}")]
         public ViewResult Status(int statusCode)
