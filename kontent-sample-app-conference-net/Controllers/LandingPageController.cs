@@ -24,14 +24,6 @@ namespace kontent_sample_app_conference_net.Controllers
                 new EqualsFilter("system.type", "home")
                 );
 
-            var count = response.Items.Count;
-
-            if (response.Items.Count == 0)
-            {
-                return base.GetResponse(response);
-            }
-            else
-            {
                 if (response.Items.Count > 1)
                 {
                     return View(response.Items);
@@ -41,8 +33,6 @@ namespace kontent_sample_app_conference_net.Controllers
                     var loc = response.Items.First().Location.First().Name;
                     return RedirectToAction("Index", "Home", new { location = loc });
                 }
-            }
-            
         }
     }
 }

@@ -26,7 +26,7 @@ namespace kontent_sample_app_conference_net.Controllers
                 new DepthParameter(2)
                 );
 
-            return base.GetResponse(response);
+            return View(response.Items[0]);
         }
 
         public async Task<ActionResult> Detail(string urlSlug, string location)
@@ -40,7 +40,7 @@ namespace kontent_sample_app_conference_net.Controllers
                 new DepthParameter(2)
                 );
 
-            return base.GetResponse(response);
+            return View(response.Items[0]);
         }
     }
 }

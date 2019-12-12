@@ -27,7 +27,7 @@ namespace kontent_sample_app_conference_net.Controllers
 
             item.EditURL = base.GetEditURL(item.System.Language, item.System.Id);
 
-            return base.GetResponse(response);
+            return View(item);
         }
 
         public IActionResult Privacy()
