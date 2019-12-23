@@ -1,23 +1,40 @@
 ﻿@model IEnumerable<Speaker>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Speakers";
 }
 
-<h1>Speakers:</h1>
-
-@foreach (Speaker sp in Model)
-{
-<div>
-    @if (sp.Photo.Any())
-    {
-        <img src="@sp.Photo.First().Url" />
-    }
-    else
-    {
-        <img src="~/images/SpeakerIcon.png" />
-    }
-    <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
-    - <span>@sp.JobTitle</span>
-</div>
-}
-
+    <section id="speakers">
+        <div class="section-header">
+            <h2>Speakers:</h2>
+        </div>
+        <div class="row no-gutters supporters-wrap clearfix">
+            @foreach (Speaker sp in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-xs-6">
+                    <a asp-route="speaker" asp-route-id="@sp.SpeakerId">
+                        <div class="speaker">
+                            @if (sp.Photo.Any())
+                            {
+                                <img class="img-fluid" src="@sp.Photo.First().Url" />
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/images/SpeakerIcon.png" />
+                            }
+                            <div class="details">
+                                <h3>@sp.FirstName @sp.LastName</h3>
+                                @if (@sp.JobTitle.Any())
+                                {
+                                    <p>@sp.JobTitle</p>
+                                }
+                                else
+                                {
+                                    <p>Guest Speaker</p>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>

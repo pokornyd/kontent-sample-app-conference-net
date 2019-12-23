@@ -4,19 +4,25 @@
     ViewData["Title"] = "Default";
 }
 
-@foreach (AgendaItem item in Model)
-{
-    <div>               
-        <a asp-controller="Agenda" asp-action="Detail" asp-route-urlSlug="@item.UrlSlug" asp-route-location="@item.Location.First().Name">
-            <h4>@item.Name</h4>
-        </a>
-        @foreach (Presentation pr in item.Presentation)
-        {
-            <p>
-                @Html.DisplayFor(model => pr.Description)
-            </p>
-        }
 
-    </div>
-}
+    <section id="schedule">
+        <div class="container wow fadeInUp">
+            <h2>Sessions</h2>
+            @foreach (AgendaItem item in Model)
+            {
+                <a asp-controller="Agenda" asp-action="Detail" asp-route-urlSlug="@item.UrlSlug" asp-route-location="@item.Location.First().Name">
+                    <div class="schedule-item">
 
+                        <h4>@item.Name</h4>
+
+                        @foreach (Presentation pr in item.Presentation)
+                        {
+                            <p>
+                                @Html.DisplayFor(model => pr.Description)
+                            </p>
+                        }
+                    </div>
+                </a>
+            }
+        </div>
+        </section>

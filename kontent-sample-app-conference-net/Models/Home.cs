@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Kentico.Kontent.Delivery;
 
 namespace KenticoKontentModels
@@ -26,11 +27,13 @@ namespace KenticoKontentModels
 
         public IEnumerable<object> Sponsors { get; set; }
         public string BannerText { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM. dd, yyyy}")]
         public DateTime? EndDate { get; set; }
         public IRichTextContent Description { get; set; }
         public IEnumerable<Asset> BannerImage { get; set; }
-        public IEnumerable<object> Venue { get; set; }
+        public IEnumerable<Venue> Venue { get; set; }
         public IEnumerable<TaxonomyTerm> Location { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM. dd, yyyy}")]
         public DateTime? StartDate { get; set; }
         public ContentItemSystemAttributes System { get; set; }
     }
