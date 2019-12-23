@@ -34,9 +34,13 @@ namespace kontent_sample_app_conference_net
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                app.UseExceptionHandler("/Error/Status");
             }
             else
             {
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
                 app.UseExceptionHandler("/Home/Error");
             }
 

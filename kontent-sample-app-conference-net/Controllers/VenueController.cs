@@ -14,7 +14,7 @@ namespace kontent_sample_app_conference_net.Controllers
         {
 
         }
-        public async Task<ViewResult> Index(string location)
+        public async Task<ActionResult> Index(string location)
         {
             ViewBag.location = location;
 
