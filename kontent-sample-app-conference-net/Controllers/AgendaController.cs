@@ -15,7 +15,7 @@ namespace kontent_sample_app_conference_net.Controllers
 
         }
 
-        public async Task<ViewResult> Index(string id, string location)
+        public async Task<ActionResult> Index(string id, string location)
         {
             ViewBag.location = location;
 
@@ -25,10 +25,11 @@ namespace kontent_sample_app_conference_net.Controllers
                 new DepthParameter(4)
                 );
 
+            //return base.GetResponse(response);
             return View(response.Items[0]);
         }
 
-        public async Task<ViewResult> Detail(string urlSlug, string location)
+        public async Task<ActionResult> Detail(string urlSlug, string location)
         {
             ViewBag.location = location;
 
