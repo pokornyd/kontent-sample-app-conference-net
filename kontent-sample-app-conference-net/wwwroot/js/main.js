@@ -13,6 +13,16 @@ jQuery(document).ready(function( $ ) {
     return false;
   });
 
+// Edit in Kontent button
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+        $('.kontent-edit').fadeIn('slow');
+    } else {
+        $('.kontent-edit').fadeOut('slow');
+    }
+});
+
+
   // Header fixed on scroll
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {

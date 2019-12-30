@@ -86,6 +86,33 @@ h6 {
     color: #fff;
 }
 
+/* Edit in Kontent button */
+.kontent-edit {
+    position: fixed;
+    display: none;
+    background: #F05A22;
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    left: 15px;
+    bottom: 15px;
+    transition: background 0.5s ease-in-out;
+    font-size: 16px;
+    padding: 6px;
+}
+
+.kontent-edit:focus {
+    background: #f6571b;
+    color: #fff;
+    outline: none;
+}
+
+.kontent-edit:hover {
+    background: #eac9bd;
+    color: #fff;
+}
+
+
 /* Sections Header
 --------------------------------*/
 

@@ -5,7 +5,7 @@
 
 <section id="schedule">
     <div class="container wow fadeInUp">
-    <!--==========================
+        <!--==========================
       Header Section
     ============================-->
         <div class="section-header">
@@ -20,15 +20,15 @@
             }
         </ul>
         <!--==========================
-          Agenda Day
-        ============================-->
+      Agenda Day
+    ============================-->
         @foreach (Agenda ag in Model.Agendas)
         {
             <h1 class="schedule-header" name="@ag.System.Codename">@ag.Name</h1>
             <div class="tab-content row justify-content-center">
                 <!--==========================
-                Agenda Item
-                ============================-->
+            Agenda Item
+            ============================-->
                 @foreach (AgendaItem ai in ag.AgendaItems)
                 {
                     <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="@ag.System.Codename">
@@ -58,8 +58,8 @@
                 }
             </div>
         }
-      
-      <a href="@Model.EditURL" target="_blank">Edit in Kentico Kontent</a>
+
+        <a class="kontent-edit" href="@Model.EditURL" target="_blank">Edit in Kontent</a>
 
     </div>
 </section>
