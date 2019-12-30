@@ -8,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Kentico.Kontent.Delivery;
+using kontent_sample_app_conference_net.Models;
 
 namespace KenticoKontentModels
 {
-    public partial class Home
+    public partial class Home : BaseModel
     {
         public const string Codename = "home";
         public const string SponsorsCodename = "sponsors";
