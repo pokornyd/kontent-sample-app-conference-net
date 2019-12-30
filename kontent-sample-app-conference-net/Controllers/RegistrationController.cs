@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Kentico.Kontent.Delivery;
 using KenticoKontentModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace kontent_sample_app_conference_net.Controllers
 {
     public class RegistrationController : BaseController
     {
-        public RegistrationController(IDeliveryClient deliveryClient) : base(deliveryClient)
+        public RegistrationController(IDeliveryClient deliveryClient, IConfiguration configuration) : base(deliveryClient, configuration)
         {
 
         }
