@@ -1,60 +1,84 @@
 ﻿@model AgendaItem
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = Model.Name;
 }
 
-<div>
-    @Html.DisplayFor(model => model.StartTime) &ndash; @Html.DisplayFor(model => model.EndTime)
-</div>
+<section id="schedule">
+    <div class="container wow fadeInUp">
+        <div class="section-header">
+            <h2>@Html.DisplayFor(model => model.Name)</h2>
+        </div>
+        <!--==========================
+          Room Section
+        ============================-->
+        <div class="sub-heading">
+            @foreach (Room ro in Model.Room)
+            {
+                <h3>
+                    @ro.Name
+                    &mdash;
+                    @foreach (var option in ro.Floor)
+                    {
+                        @option.Name
+                    }
+                </h3>
+            }
+            <h4>@Html.DisplayFor(model => model.StartTime) &ndash; @Html.DisplayFor(model => model.EndTime)</h4>
+        </div>
+        <!--==========================
+        Presentation/Recording Section
+        ============================-->
 
-<h1>@Html.DisplayFor(model => model.Name)</h1>
-
-@foreach (Presentation pr in Model.Presentation)
-{
-    <p>
-        @Html.DisplayFor(model => pr.Description)
-    </p>
-}
-    @if (Model.Recording.Any())
-    {
-        <h3>Recorded Presentation:</h3>
-        @foreach (HostedVideo hv in Model.Recording)
+        @foreach (Presentation pr in Model.Presentation)
         {
-            <iframe class='hosted-video__wrapper' width='560' height='315' src='https://www.youtube.com/embed/@hv.VideoId' frameborder='0' allowfullscreen> </iframe>
+            <p>
+                @Html.DisplayFor(model => pr.Description)
+            </p>
         }
-    }
-
-@foreach (Room ro in Model.Room)
-{
-    <div>
-        @ro.Name
-        &mdash;
-        @foreach (var option in ro.Floor)
+        @if (Model.Recording.Any())
         {
-            @option.Name
+            <h3>Recorded Presentation:</h3>
+            @foreach (YoutubeVideo yv in Model.Recording)
+            {
+                <iframe class='hosted-video__wrapper' width='560' height='315' src='https://www.youtube.com/embed/@yv.VideoId' frameborder='0' allowfullscreen> </iframe>
+            }
         }
     </div>
-}
+</section>
 
-<hr />
+<!--==========================
+  Speakers Section
+============================-->
 
 @if (Model.Speakers.Any())
 {
-    <div>
-        <h4>Speakers:</h4>
-        @foreach (Speaker sp in Model.Speakers)
-        {
-            <div>
-                <img src="@sp.Photo.First().Url" height="10%" width="10%" />
-                <a asp-route="speaker" asp-route-id="@sp.SpeakerId">@sp.FirstName @sp.LastName</a>
-                - <span>@sp.JobTitle</span>
-            </div>
-        }
+    <section id="speakers">
+        <div class="section-header">
+            <h2>Speakers:</h2>
+        </div>
+        <div class="row no-gutters supporters-wrap clearfix">
+            @foreach (Speaker sp in Model.Speakers)
+            {
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <a asp-route="speaker" asp-route-id="@sp.SpeakerId">
+                        <div class="speaker">
+                            @if (sp.Photo.Any())
+                            {
+                                <img class="img-fluid" src="@sp.Photo.First().Url" />
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/images/SpeakerIcon.png" />
+                            }
+                            <div class="details">
+                                <h3>@sp.FirstName @sp.LastName</h3>
+                                <p>@sp.JobTitle</p>
+                            </div>
 
-    </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
 }
-
-<hr />
-<div>
-    <a href='javascript:history.go(-1)'>Back</a>
-</div>

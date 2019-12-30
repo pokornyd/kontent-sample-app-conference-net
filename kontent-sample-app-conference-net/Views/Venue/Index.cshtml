@@ -1,32 +1,51 @@
 ﻿@model IEnumerable<Venue>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Venue";
 }
 
-@foreach (Venue ve in Model)
-{
-    <h1>@Html.DisplayFor(model => ve.Name)</h1>
-
-    <img src="@ve.Image.First().Url" />
-
-    <div>
-        @Html.DisplayFor(model => ve.Description)
-    </div>
-
-    <h4>Address:</h4>
-    <div>
-        @Html.DisplayFor(model => ve.Address)
-    </div>
-
-    <div>
-       <a href="@Html.DisplayFor(model => ve.Link)" >Book a Room</a>
-    </div>
-
-    <div>
-        <iframe src="@ve.MapSource" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-    </div>
-}
-
-<div>
-    <a href='javascript:history.go(-1)'>Back</a>
-</div>
+<section id="venue">
+    @foreach (Venue ve in Model)
+    {
+        <div class="section-header">
+            <h2>@Html.DisplayFor(model => ve.Name)</h2>
+        </div>
+        <!--==========================
+        Image Gallery
+        ============================-->
+        <div class="container-fluid venue-gallery-container">
+            <div class="row no-gutters">
+                @foreach (var venueImage in ve.Image)
+                {
+                    <div class="col-lg-3 col-md-4">
+                        <div class="venue-gallery">
+                            <img class="img-fluid" src="@venueImage.Url" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!--==========================
+        Address
+        ============================-->
+        <div class="section-header">
+            <h2>Address:</h2>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-lg-6 venue-info">
+                <div class="row justify-content-center">
+                    <div class="col-11 col-lg-8">
+                        <h3>@Html.DisplayFor(model => ve.Address)</h3>
+                        <p>@Html.DisplayFor(model => ve.Description)</p>
+                        <h4><a href="@Html.DisplayFor(model => ve.Link)" target="_blank">Book a Room</a></h4>
+                    </div>
+                </div>
+            </div>
+            <!--==========================
+            Map frame
+            ============================-->
+            <div class="col-lg-6 venue-map">
+                <iframe src="@ve.MapSource" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    }
+</section>

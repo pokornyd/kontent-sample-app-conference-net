@@ -29,5 +29,6 @@ namespace kontent_sample_app_conference_net.Controllers
 
             return result;
         }
+
     }
 }

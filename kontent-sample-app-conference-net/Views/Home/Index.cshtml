@@ -3,40 +3,94 @@
 @{
     ViewData["Title"] = Model.BannerText;
 }
-
-<div class="text-center">
-    @if (Model.LiveUpdates.Any())
-    {
-        @foreach (AgendaItem ai in Model.LiveUpdates)
+<!--==========================
+     Banner Section
+   ============================-->
+<section id="intro" style="background:url(@Html.DisplayFor(model => model.BannerImage.First().Url)); background-repeat: no-repeat; background-size:cover;">
+    <div class="intro-container wow fadeIn">
+        <h1 class="mb-4 pb-0">@Html.DisplayFor(model => model.BannerText)</h1>
+        <p class="mb-4 pb-0">@Html.DisplayFor(model => model.StartDate) - @Html.DisplayFor(model => model.EndDate)</p>
+        @foreach (Venue ve in Model.Venue)
         {
-            @if (DateTime.UtcNow.Subtract(ai.System.LastModified).TotalHours < 1)
+            <span>@ve.Name</span>
+        }
+    </div>
+</section>
+<!--==========================
+     Details Section
+   ============================-->
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+            <div class="col-lg-3">
+                <h3>Where</h3>
+                @foreach (Venue ve in Model.Venue)
+                {
+                    <span>@ve.Name</span>
+                }
+            </div>
+            <div class="col-lg-3">
+                <h3>When</h3>
+                <p>@Html.DisplayFor(model => model.StartDate) <br /> @Html.DisplayFor(model => model.EndDate)</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--==========================
+     Venue Section
+   ============================-->
+<section id="venue" class="wow fadeInUp">
+    <div class="container-fluid">
+        <div class="section-header">
+            <h2>Event Venue</h2>
+        </div>
+        @foreach (Venue ve in Model.Venue)
+        {
+            <div class="row no-gutters">
+                <div class="col-lg-6 venue-map">
+                    <iframe src="@ve.MapSource" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+
+                <div class="col-lg-6 venue-info">
+                    <div class="row justify-content-center">
+                        <div class="col-11 col-lg-8">
+                            <a asp-route-location="@ViewBag.location" asp-controller="Venue" asp-action="Index">
+                                <h3>@Html.DisplayFor(model => ve.Name)</h3>
+                            </a>
+                            <p>@Html.DisplayFor(model => ve.Description)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+</section>
+
+<!--==========================
+     Sponsors Section
+   ============================-->
+<section id="supporters" class="wow fadeInUp">
+    <div class="section-header">
+        <h2>Sponsors</h2>
+    </div>
+    <div class="container">
+        <div class="row no-gutters supporters-wrap clearfix">
+            @foreach (Sponsor sp in Model.Sponsors)
             {
-                <div class="alert alert-info">
-                    <b>A change was made to </b>
-                    <a asp-controller="Agenda" asp-action="Detail" asp-route-location="@ViewBag.location" asp-route-urlSlug="@ai.UrlSlug">
-                        @ai.Name
-                    </a>
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="supporter-logo">
+                        <a asp-route-location="@ViewBag.location" asp-controller="Sponsors" asp-action="Index"><img src="@sp.Logo.First().Url" class="img-fluid" alt=""></a>
+                    </div>
                 </div>
             }
-        }
-    }
-    <h1 class="display-4">@Html.DisplayFor(model => model.BannerText)</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>
-        <img src="@Html.DisplayFor(model => model.BannerImage.First().Url)" />
-    </p>
-    <p>@Html.DisplayFor(model => model.StartDate)</p>
-    <p>@Html.DisplayFor(model => model.EndDate)</p>
-    <p>@Html.DisplayFor(model => model.Description)</p>
-    @foreach (Venue ve in Model.Venue)
-    {
-        <p>@ve.Name</p>
-    }
-    @foreach (Sponsor sp in Model.Sponsors)
-    {
-        <a href="@sp.Website"><img src="@sp.Logo.First().Url" height="25%" width="25%" /></a>
-    }
+        </div>
+    </div>
+</section>
 
-    <a href="@Model.EditURL" target="_blank">Edit in Kentico Kontent</a>
+  <a href="@Model.EditURL" target="_blank">Edit in Kentico Kontent</a>
 
 </div>

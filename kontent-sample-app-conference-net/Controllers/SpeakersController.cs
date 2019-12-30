@@ -19,6 +19,7 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryItemListingResponse<Speaker> response = await DeliveryClient.GetItemsAsync<Speaker>(
                 new EqualsFilter("system.type", "speaker")
                 );
+                
             return View(response.Items);
         }
 
@@ -29,6 +30,7 @@ namespace kontent_sample_app_conference_net.Controllers
             DeliveryItemListingResponse<Speaker> response = await DeliveryClient.GetItemsAsync<Speaker>(
                 new EqualsFilter("elements.speaker_id", id)
                 );
+                
             return View(response.Items[0]);
         }
     }

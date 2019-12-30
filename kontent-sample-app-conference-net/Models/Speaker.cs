@@ -21,7 +21,7 @@ namespace KenticoKontentModels
         public const string FirstNameCodename = "first_name";
 
         public string LastName { get; set; }
-        public IRichTextContent Bio { get; set; }
+        public string Bio { get; set; }
         public string JobTitle { get; set; }
         public IEnumerable<Asset> Photo { get; set; }
         public string SpeakerId { get; set; }

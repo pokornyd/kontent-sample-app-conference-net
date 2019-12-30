@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Kentico.Kontent.Delivery;
 using kontent_sample_app_conference_net.Models;
 
@@ -21,21 +22,19 @@ namespace KenticoKontentModels
         public const string DescriptionCodename = "description";
         public const string BannerImageCodename = "banner_image";
         public const string VenueCodename = "venue";
-        public const string LiveUpdatesCodename = "live_updates";
         public const string LocationCodename = "location";
         public const string SocialMediaFeedsCodename = "social_media_feeds";
         public const string StartDateCodename = "start_date";
 
         public IEnumerable<object> Sponsors { get; set; }
         public string BannerText { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM. dd, yyyy}")]
         public DateTime? EndDate { get; set; }
-        public IEnumerable<object> Registration { get; set; }
         public IRichTextContent Description { get; set; }
         public IEnumerable<Asset> BannerImage { get; set; }
-        public IEnumerable<object> Venue { get; set; }
-        public IEnumerable<object> LiveUpdates { get; set; }
+        public IEnumerable<Venue> Venue { get; set; }
         public IEnumerable<TaxonomyTerm> Location { get; set; }
-        public IEnumerable<object> SocialMediaFeeds { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MMM. dd, yyyy}")]
         public DateTime? StartDate { get; set; }
         public ContentItemSystemAttributes System { get; set; }
     }

@@ -10,14 +10,12 @@ using Kentico.Kontent.Delivery;
 
 namespace KenticoKontentModels
 {
-    public partial class HostedVideo
+    public partial class YoutubeVideo
     {
-        public const string Codename = "hosted_video";
+        public const string Codename = "youtube_video";
         public const string VideoIdCodename = "video_id";
-        public const string VideoHostCodename = "video_host";
 
         public string VideoId { get; set; }
-        public IEnumerable<MultipleChoiceOption> VideoHost { get; set; }
         public ContentItemSystemAttributes System { get; set; }
     }
 }
