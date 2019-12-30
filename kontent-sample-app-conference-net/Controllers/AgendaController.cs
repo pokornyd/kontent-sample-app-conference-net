@@ -26,7 +26,11 @@ namespace kontent_sample_app_conference_net.Controllers
                 new DepthParameter(2)
                 );
 
-            return View(response.Items[0]);
+            var item = response.Items[0];
+
+            item.EditURL = base.GetEditURL(item.System.Language, item.System.Id);
+
+            return View(item);
         }
 
         public async Task<ActionResult> Detail(string urlSlug, string location)

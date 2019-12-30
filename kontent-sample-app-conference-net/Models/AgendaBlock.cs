@@ -7,10 +7,11 @@
 using System;
 using System.Collections.Generic;
 using Kentico.Kontent.Delivery;
+using kontent_sample_app_conference_net.Models;
 
 namespace KenticoKontentModels
 {
-    public partial class AgendaBlock
+    public partial class AgendaBlock : BaseModel
     {
         public const string Codename = "agenda_block";
         public const string AgendasCodename = "agendas";
