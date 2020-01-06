@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  kontent-sample-app-conference-net:
+    image: ${DOCKER_REGISTRY}kontentsampleappconferencenet
+    build:
+      context: .
+      dockerfile: kontent-sample-app-conference-net\Dockerfile
