@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:2.2-aspnetcore-runtime-nanoserver-1709 AS base
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.2-sdk-nanoserver-1709 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY kontent-sample-app-conference-net/kontent-sample-app-conference-net.csproj kontent-sample-app-conference-net/
 RUN dotnet restore kontent-sample-app-conference-net/kontent-sample-app-conference-net.csproj
