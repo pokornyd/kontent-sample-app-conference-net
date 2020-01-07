@@ -25,7 +25,17 @@ namespace kontent_sample_app_conference_net.Controllers
 
         private String GetProjectId()
         {
-            string result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
+            string result;
+
+            if (HttpContext.Request.Host.ToString() == "konnections.herokuapp.com")
+            {
+                result = Environment.GetEnvironmentVariable("PROJECT_ID");
+            }
+
+            else
+            {
+                result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
+            }
 
             return result;
         }
