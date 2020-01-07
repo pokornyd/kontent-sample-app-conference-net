@@ -29,7 +29,7 @@ namespace kontent_sample_app_conference_net.Controllers
 
             if (HttpContext.Request.Host.ToString() == "konnections.herokuapp.com")
             {
-                Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
+                result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
             }
 
             else
