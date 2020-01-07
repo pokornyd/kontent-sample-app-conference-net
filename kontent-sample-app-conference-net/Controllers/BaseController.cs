@@ -34,7 +34,7 @@ namespace kontent_sample_app_conference_net.Controllers
 
             else
             {
-                result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
+                result = Environment.GetEnvironmentVariable("PROJECT_ID");
             }
 
             return result;
