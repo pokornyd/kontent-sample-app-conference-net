@@ -25,19 +25,7 @@ namespace kontent_sample_app_conference_net.Controllers
 
         private String GetProjectId()
         {
-            string result;
-
-            if (HttpContext.Request.Host.ToString() == "konnections.herokuapp.com")
-            {
-                result = "test";//"db96e910-edf8-0094-b795-f3ce073c7ae0";
-                ViewBag.cururl = HttpContext.Request.Host.ToString();
-            }
-
-            else
-            {
-                result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
-            }
-
+            string result = Configuration.GetSection("DeliveryOptions").GetValue<string>("ProjectId");
             return result;
         }
 
