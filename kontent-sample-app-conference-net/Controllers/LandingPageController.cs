@@ -22,7 +22,7 @@ namespace kontent_sample_app_conference_net.Controllers
           DeliveryItemListingResponse<Home> response = await DeliveryClient.GetItemsAsync<Home>(
             new EqualsFilter("system.type", "home")
             );
-
+            ViewBag.cururl = HttpContext.Request.Host.ToString();
             if (response.Items.Count > 1)
             {
                 return View(response.Items);
