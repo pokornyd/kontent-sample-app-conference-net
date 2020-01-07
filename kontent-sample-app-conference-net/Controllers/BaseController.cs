@@ -30,6 +30,7 @@ namespace kontent_sample_app_conference_net.Controllers
             if (HttpContext.Request.Host.ToString() == "konnections.herokuapp.com")
             {
                 result = "test";//"db96e910-edf8-0094-b795-f3ce073c7ae0";
+                ViewBag.cururl = HttpContext.Request.Host.ToString();
             }
 
             else
